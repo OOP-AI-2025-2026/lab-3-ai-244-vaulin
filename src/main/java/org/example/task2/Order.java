@@ -17,17 +17,18 @@ public class Order {
         builder.append("\n------------------\n");
 
         double sum = 0.0;
+        Item[] contents = cart.getItemList();
 
-        for (int i = 0; i < cart.index; i++) {
+        for (int i = 0; i < cart.getItemIndexInList(); i++) {
 
-            sum += cart.contents[i].price;
+            sum += contents[i].getPrice();
 
             builder.append("Item id: ");
-            builder.append(cart.contents[i].id);
+            builder.append(contents[i].getId());
             builder.append(" name: ");
-            builder.append(cart.contents[i].name);
+            builder.append(contents[i].getName());
             builder.append(" price: ");
-            builder.append(cart.contents[i].price);
+            builder.append(contents[i].getPrice());
             builder.append("\n");
         }
 

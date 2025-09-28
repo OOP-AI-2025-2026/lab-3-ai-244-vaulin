@@ -1,9 +1,9 @@
 package org.example.task2;
 
 public class Box {
-    private double width;
-    private double height;
-    private double length;
+    private final double width;
+    private final double height;
+    private final double length;
 
     public Box(double width, double height, double length)  {
         checkValidInputData(width, height, length);

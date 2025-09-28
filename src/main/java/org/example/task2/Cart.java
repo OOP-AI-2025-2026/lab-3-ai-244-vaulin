@@ -3,32 +3,23 @@ package org.example.task2;
 import java.util.Arrays;
 
 public class Cart {
-
-    private Item[] itemList;
-    private int itemIndexInList;
+    private final Item[] itemList;
+    private int itemIndex;
 
     public Cart(Item[] item) {
         this.itemList = item;
     }
 
-    public int getItemIndexInList() {
-        return this.itemIndexInList;
-    }
-
-    public Item[] getItemList() {
-        return itemList;
-    }
-
     public void removeById(int itemIndex) {
-        if (this.itemIndexInList == 0) return;
+        if (this.itemIndex == 0) return;
 
         int foundItemIndex = this.findItemInArray(this.itemList[itemIndex]);
 
         if (foundItemIndex == -1) return;
 
-        if (foundItemIndex == this.itemIndexInList - 1) {
-            this.itemList[this.itemIndexInList - 1] = null;
-            this.itemIndexInList--;
+        if (foundItemIndex == this.itemIndex - 1) {
+            this.itemList[this.itemIndex - 1] = null;
+            this.itemIndex--;
             return;
         }
 
@@ -36,15 +27,15 @@ public class Cart {
     }
 
     public void shiftArray(int itemIndex) {
-        for (int i = itemIndex; i < this.itemIndexInList - 1; i++) {
+        for (int i = itemIndex; i < this.itemIndex - 1; i++) {
             this.itemList[i] = this.itemList[i + 1];
         }
-        this.itemList[this.itemIndexInList -1] = null;
-        this.itemIndexInList--;
+        this.itemList[this.itemIndex -1] = null;
+        this.itemIndex--;
     }
 
     public int findItemInArray(Item item) {
-        for (int i = 0; i < this.itemIndexInList; i++) {
+        for (int i = 0; i < this.itemIndex; i++) {
             if (this.itemList[i].getId() == item.getId()) {
                 return i;
             }
@@ -55,12 +46,20 @@ public class Cart {
     public void addToCart(Item item) {
         if (isCartFull()) return;
 
-        this.itemList[this.itemIndexInList] = item;
-        this.itemIndexInList++;
+        this.itemList[this.itemIndex] = item;
+        this.itemIndex++;
     }
 
     public boolean isCartFull() {
-        return itemIndexInList == this.itemList.length;
+        return itemIndex == this.itemList.length;
+    }
+
+    public int getItemListIndex() {
+        return this.itemIndex;
+    }
+
+    public Item[] getItemList() {
+        return itemList;
     }
 
     @Override

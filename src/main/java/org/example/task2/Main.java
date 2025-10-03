@@ -65,7 +65,6 @@ public class Main {
             myStack.push(i);
         }
         System.out.println("Size: " + myStack.size());
-        System.out.println("Full size: " + myStack.fullSize());
 
         System.out.println("Result: Not empty - " + myStack.isEmpty());
         myStack.clear();

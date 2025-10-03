@@ -32,5 +32,50 @@ public class Main {
         System.out.println("Площа поверхні: " + box.calcSurfaceArea());
         System.out.println("Площа бічної поверхні: " + box.calcLateralSurfaceArea());
         System.out.println("Об'єм: " + box.calcVolume());
+
+
+        // Testing IntStack
+        IntStack myStack = new IntStack();
+
+        myStack.push(1);
+        myStack.push(3);
+        myStack.push(40);
+
+        for (int i = 0; i < 7; i++) {
+            myStack.push(i);
+        }
+
+        myStack.pop();
+        myStack.pop();
+
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+
+//        myStack.clear();
+//        myStack.pop(); throws an exception
+
+        myStack.push(1);
+        myStack.push(3);
+        myStack.push(40);
+        System.out.println("Peek:" + myStack.peek());
+
+        myStack.clear();
+
+        for (int i = 0; i < 5; i++) {
+            myStack.push(i);
+        }
+        System.out.println("Size: " + myStack.size());
+        System.out.println("Full size: " + myStack.fullSize());
+
+        System.out.println("Result: Not empty - " + myStack.isEmpty());
+        myStack.clear();
+        System.out.println("Result: It is empty - " + myStack.isEmpty());
+
+        myStack.clear();
+        for (int i = 1; i < 5; i++) {
+            myStack.push(i*3);
+        }
+
+        myStack.push(10000);
     }
 }
